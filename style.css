@@ -1,28 +1,38 @@
-:root{
+:root {
     --background: #101114;
     --primary-color: #5e4d47;
     --secondary-color: #181716;
-    --accent-color: #ffa600;
+    --accent-color: chocolate;
     --text-color: #F9F9F9;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
 }
-html{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16pt;
-  color: var(--text-color);
+
+html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16pt;
+    color: var(--text-color);
 }
-body{
+
+body {
     min-height: 100vh;
-    padding: 10px;
-    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+    background-image: url('symbole.jpg');
+    background-size: cover; /* Bild skaliert, um den Bildschirm zu füllen */
+    background-position: center; /* Bild wird zentriert */
+    background-repeat: no-repeat; /* Bild wiederholt sich nicht */
+    overflow: hidden; /* Verhindert Scrollen */
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--text-color); /* Textfarbe bleibt erhalten */
 }
-h1{
+
+h1 {
     margin-top: 100px;
     margin-bottom: 20px;
     font-size: 3rem;
@@ -31,14 +41,16 @@ h1{
     text-align: center;
     color: var(--accent-color);
 }
-.wrapper{
+
+.wrapper {
     width: 700px;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-#todo-input{
+
+#todo-input {
     box-sizing: border-box;
     padding: 12px 20px;
     width: 100%;
@@ -48,18 +60,22 @@ h1{
     font: inherit;
     color: var(--text-color);
     caret-color: var(--background);
+    background-color: rgba(0, 0, 0, 0.5);
 }
-#todo-input:focus{
+
+#todo-input:focus {
     outline: none;
 }
-form{
+
+form {
     position: relative;
 }
-#add-button{
+
+#add-button {
     position: absolute;
     top: 0;
     right: 0;
-    border: 1px ridge rgba(255, 255, 255, 0.3);
+    border: 1px ridge var(--accent-color);
     background-color: var(--accent-color);
     height: 100%;
     padding: 0 30px;
@@ -69,22 +85,31 @@ form{
     font-weight: 600;
     color: var(--background);
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
-.todo{
+
+#add-button:hover {
+    background-color: var(--text-color);
+    transform: scale(1.05);
+}
+
+.todo {
     margin-bottom: 10px;
     padding: 0 16px;
-    background-color: var(--primary-color);
-    border-radius: 15px;
+    background-color: rgba(94, 77, 71, 0.9);
+    border-radius: 1000px;
     display: flex;
     align-items: center;
 }
-.todo .todo-text{
+
+.todo .todo-text {
     padding: 15px;
     padding-right: 0;
     flex-grow: 1;
     transition: 200ms ease;
 }
-.delete-button{
+
+.delete-button {
     padding: 3px;
     background: none;
     border: none;
@@ -92,15 +117,18 @@ form{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    
+
 }
-.delete-button svg{
+
+.delete-button svg {
     transition: 200ms ease;
 }
-.delete-button:hover svg{
+
+.delete-button:hover svg {
     fill: #ff0033;
 }
-.custom-checkbox{
+
+.custom-checkbox {
     border: 2px solid var(--accent-color);
     border-radius: 50%;
     min-height: 20px;
@@ -112,31 +140,38 @@ form{
     transition: 200ms ease;
     cursor: pointer;
 }
-input[type="checkbox"]:checked ~ .custom-checkbox{
+
+input[type="checkbox"]:checked~.custom-checkbox {
     background-color: var(--accent-color);
 }
-input[type="checkbox"]:checked ~ .custom-checkbox svg{
+
+input[type="checkbox"]:checked~.custom-checkbox svg {
     fill: var(--primary-color);
 }
-input[type="checkbox"]:checked ~ .todo-text{
+
+input[type="checkbox"]:checked~.todo-text {
     text-decoration: line-through;
     color: var(--secondary-color);
 }
-input[type="checkbox"]{
+
+input[type="checkbox"] {
     display: none;
 }
-@media(max-width: 500px){
-    html{
+
+@media(max-width: 500px) {
+    html {
         font-size: 12pt;
     }
-    #add-button{
+
+    #add-button {
         position: unset;
         width: 100%;
         margin-top: 10px;
         padding: 15px;
         height: auto;
     }
-    h1{
+
+    h1 {
         margin-top: 50px;
         font-size: 15vw;
     }
